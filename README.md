@@ -13,11 +13,8 @@ This project analyzes customer data to identify distinct segments based on demog
 ## 🚀 Live Demo
 
 Run locally with:
-```bash
-https://customer-segmentation-a4ndp9ybh8hhdsuqvqge8f.streamlit.app/
-
-```
-
+## 🔗 Live Demo
+👉 [Click here to try the app](https://customer-segmentation-a4ndp9ybh8hhdsuqvqge8f.streamlit.app/)
 ---
 
 ## 📁 Project Structure
