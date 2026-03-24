@@ -14,7 +14,8 @@ This project analyzes customer data to identify distinct segments based on demog
 
 Run locally with:
 ```bash
-streamlit run segmentation.py
+<img width="1213" height="586" alt="image" src="https://github.com/user-attachments/assets/0cfb4731-dc47-42bb-bc88-7b248c225faa" />
+
 ```
 
 ---
