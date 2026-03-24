@@ -78,7 +78,7 @@ The Streamlit app accepts customer details as input and predicts which cluster t
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/customer-segmentation.git
+git clone https://github.com/Nipun0101/customer-segmentation.git
 cd customer-segmentation
 ```
 
