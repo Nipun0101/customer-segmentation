@@ -136,12 +136,8 @@ seaborn
 
 ## 👤 Author
 
-**Nipun**  
-📧 your-email@example.com  
-🔗 [LinkedIn](https://linkedin.com/in/your-profile) | [GitHub](https://github.com/your-username)
+**Nipun Bansal**  
+📧 nipunbansal01@gmail.com
+🔗 [LinkedIn](https://www.linkedin.com/in/nipun-bansal-b20b9b269/) | [GitHub](https://github.com/Nipun0101)
 
 ---
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
