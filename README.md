@@ -1,141 +1,56 @@
-# 🛒 Customer Segmentation App
+# 🛒 Customer Segmentation — Interactive Visual Analytics (DSE3150)
 
-A machine learning project that segments customers into behavioral groups using **K-Means Clustering**, with an interactive **Streamlit** web app for real-time prediction.
+An interactive Streamlit dashboard that explores a retail customer dataset, groups customers with **K-Means**, and lets a user explore the result with linked, filterable visualizations including a **customer similarity network**.
 
----
+**Live app:** https://customer-segmentation-a4ndp9ybh8hhdsuqvqge8f.streamlit.app/
 
-## 📌 Project Overview
+## Questions the tool answers
+1. Which distinct customer groups exist?
+2. What defines each group (income, spending, channel, recency)?
+3. Which groups are most valuable, and which are drifting away?
 
-This project analyzes customer data to identify distinct segments based on demographics, spending behavior, and purchase patterns. It uses unsupervised learning (K-Means) to group customers into 6 clusters, helping businesses personalize marketing strategies.
+## Dataset
+`customer_segmentation.csv` — about 2,200 supermarket customers, 29 columns (demographics, product spending, purchase channels, campaign responses). Seven features are used for clustering: Age, Income, Total_Spending, NumWebPurchases, NumStorePurchases, NumWebVisitsMonth, Recency.
 
----
+## Preprocessing (in `segmentation.py`)
+- Drop rows with missing income; remove impossible ages and the income outlier; merge/remove junk marital values.
+- Engineered features: Age, Total_Spending, Total_Children, AcceptedAny.
+- Standardise features → K-Means (`random_state=42`) → PCA (2D) → k-nearest-neighbour similarity graph.
 
-## 🚀 Live Demo
+## Visualization pipeline
+Raw CSV → cleaning and feature engineering → data tables → scaling, K-Means, PCA, k-NN → visual structures (points, lines, nodes/edges, rectangles) → Plotly views → user interaction feeds back into the tables.
 
-Run locally with:
-## 🔗 Live Demo
-👉 [Click here to try the app](https://customer-segmentation-a4ndp9ybh8hhdsuqvqge8f.streamlit.app/)
----
-
-## 📁 Project Structure
-
-```
-Customer-Segmentation/
-│
-├── Analysis_Model.ipynb        # EDA + model training notebook
-├── segmentation.py             # Streamlit web app
-├── customer_segmentation.csv   # Raw dataset
-├── kmeans_mode.pkl             # Trained K-Means model
-├── scaler.pkl                  # Fitted StandardScaler
-├── requirements.txt            # Python dependencies
-└── README.md
-```
-
----
-
-## 🧠 ML Pipeline
-
-1. **Data Cleaning** — dropped nulls, parsed dates
-2. **Feature Engineering**
-   - `Age` = 2025 − Year_Birth
-   - `Total_Spending` = sum of all product spend columns
-   - `Total_Children` = Kidhome + Teenhome
-   - `Customer_Since` = days since joining
-3. **EDA** — distributions, correlation heatmap, group analysis by education/marital status/age group
-4. **Clustering** — StandardScaler → Elbow Method → K-Means (k=6)
-5. **Visualization** — PCA 2D scatter plot of clusters
-
----
-
-## 📊 Features Used for Clustering
-
-| Feature | Description |
+## Features
+| Tab | Content |
 |---|---|
-| Age | Customer age |
-| Income | Annual income |
-| Total_Spending | Sum of all product purchases |
-| NumWebPurchases | Online purchases count |
-| NumStorePurchases | In-store purchases count |
-| NumWebVisitsMonth | Monthly website visits |
-| Recency | Days since last purchase |
+| Data | Dataset summary and cleaning notes |
+| Explore | Histogram, box plot, bar, donut, correlation heatmap, scatter with trend line |
+| Clusters | Elbow plot, PCA scatter, segment sizes, segment profile heatmap |
+| Predict | Enter a customer, get a segment and see it on the PCA plot |
+| Interactive Lab | Filters, parallel coordinates, brushing and linking, search and details-on-demand, similarity network, treemap |
+| Design and Pipeline | Gestalt principles, visual mapping, overload control, evaluation plan |
+| How to present | Presentation script |
 
----
+Every chart has a "Why this chart / How to read it" note.
 
-## 🖥️ Web App
-
-The Streamlit app accepts customer details as input and predicts which cluster they belong to.
-
-**Input fields:**
-- Age, Income, Total Spending
-- Web Purchases, Store Purchases, Web Visits/Month
-- Recency (days since last purchase)
-
----
-
-## ⚙️ Setup & Installation
-
-### 1. Clone the repository
+## Setup
 ```bash
 git clone https://github.com/Nipun0101/customer-segmentation.git
 cd customer-segmentation
-```
-
-### 2. Create a virtual environment
-```bash
 python -m venv .venv
-.venv\Scripts\activate      # Windows
-source .venv/bin/activate   # Mac/Linux
-```
-
-### 3. Install dependencies
-```bash
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-```
-
-### 4. Run the app
-```bash
 streamlit run segmentation.py
 ```
 
----
+## Files
+- `segmentation.py` — the app (preprocessing, models, all visualizations)
+- `customer_segmentation.csv` — dataset
+- `Analysis_Model.ipynb` — original exploratory analysis and model training
+- `requirements.txt` — dependencies
 
-## 📦 Requirements
+## Tech
+Python, Streamlit, Plotly, scikit-learn, NetworkX, pandas.
 
-```
-pandas
-numpy
-scikit-learn
-streamlit
-joblib
-matplotlib
-seaborn
-```
-
-> Full pinned versions in `requirements.txt`
-
----
-
-## 📈 Results
-
-- **6 customer clusters** identified via Elbow Method
-- Clusters vary significantly in income level, spending habits, and purchase channel preferences
-- PCA visualization confirms well-separated groupings
-
----
-
-## 🛠️ Tech Stack
-
-![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python)
-![Streamlit](https://img.shields.io/badge/Streamlit-app-red?logo=streamlit)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange?logo=scikit-learn)
-![Pandas](https://img.shields.io/badge/Pandas-data-lightblue?logo=pandas)
-
----
-
-## 👤 Author
-
-**Nipun Bansal**  
-📧 nipunbansal01@gmail.com
-🔗 [LinkedIn](https://www.linkedin.com/in/nipun-bansal-b20b9b269/) | [GitHub](https://github.com/Nipun0101)
-
----
+## Author
+Nipun Bansal
