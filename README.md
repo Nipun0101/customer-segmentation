@@ -1,4 +1,4 @@
-# 🛒 Customer Segmentation — Interactive Visual Analytics (DSE3150)
+# 🛒 Customer Segmentation — Interactive Visual Analytics 
 
 An interactive Streamlit dashboard that explores a retail customer dataset, groups customers with **K-Means**, and lets a user explore the result with linked, filterable visualizations including a **customer similarity network**.
 
