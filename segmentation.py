@@ -69,7 +69,7 @@ def why(chart, purpose, read):
     st.info(f"**Why {chart}?** {purpose}\n\n**How to read it:** {read}")
 
 
-t1, t2, t3, t4, t5, t6, t7 = st.tabs(["1 · Data", "2 · Explore", "3 · Clusters", "4 · Predict", "5 · Interactive Lab", "6 · Design & Pipeline", "🎤 How to present"])
+t1, t2, t3, t4, t5, t6 = st.tabs(["1 · Data", "2 · Explore", "3 · Clusters", "4 · Predict", "5 · Interactive Lab", "6 · Design & Pipeline"])
 
 # ---------------- TAB 1 ----------------
 with t1:
@@ -185,30 +185,6 @@ with t4:
                                  marker=dict(size=18, color="black", symbol="star")))
         st.plotly_chart(fig, width='stretch')
         st.caption("The black star shows where this customer lands among all existing customers.")
-
-# ---------------- TAB 5 ----------------
-with t7:
-    st.subheader("Presentation script (8–10 minutes)")
-    st.markdown("""
-| # | Show | Say |
-|---|------|-----|
-| 1 | Data tab | "This is supermarket customer data: who they are, what they buy, how they buy. Goal: group similar customers so marketing can be targeted." |
-| 2 | Histogram | "I first checked the shape of the data. Spending is skewed: few big spenders, many small." |
-| 3 | Box plot (education) | "Higher education → higher spending, and the box plot shows the whole spread, not just the average." |
-| 4 | Bar (campaigns) | "Singles accept campaigns more than couples. A bar chart is best for comparing categories." |
-| 5 | Heatmap (correlation) | "Income and spending move together, so these are strong clustering features." |
-| 6 | Elbow plot | "WCSS drops as k grows; the bend is gradual, so I chose k = 6 for interpretability." |
-| 7 | PCA scatter | "7 features can't be drawn, so PCA gives 2 axes. Each dot is a customer, each colour a segment." |
-| 8 | Profile heatmap | "This explains each segment. Green = above others, red = below. This is how I named them." |
-| 9 | Predict tab | **Live demo:** enter a new customer, show the segment and the black star on the PCA plot. |
-| 10 | Close | "Business use: loyalty offers for high spenders, win-back campaigns for lapsing customers, deals for browsers." |
-
-**Chart-choice rule to say aloud:** distribution → histogram · compare groups → box / bar · parts of a whole → donut ·
-two numbers → scatter · many pairs → heatmap · trend / choosing k → line · many dimensions → PCA scatter.
-
-**Likely questions:** Why K-Means? (simple, fast, numeric data) · Why scale? (income is far larger than recency, K-Means uses distance) ·
-Why k = 6? (elbow was gradual; silhouette score is a next step) · Limitations? (PCA loses information, K-Means assumes round clusters, outliers were removed).
-""")
 
 # ---------------- TAB 5: INTERACTIVE LAB ----------------
 with t5:
